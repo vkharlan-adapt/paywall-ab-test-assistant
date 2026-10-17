@@ -1,0 +1,19 @@
+{
+  "name": "adapty",
+  "owner": {
+    "name": "Adapty",
+    "url": "https://adapty.io"
+  },
+  "metadata": {
+    "description": "Claude skills from Adapty for subscription app growth teams."
+  },
+  "plugins": [
+    {
+      "name": "paywall-ab-test-assistant",
+      "source": "./",
+      "description": "What to A/B test on your paywall or onboarding, answered from real subscription-app tests.",
+      "version": "1.1.0",
+      "category": "marketing"
+    }
+  ]
+}

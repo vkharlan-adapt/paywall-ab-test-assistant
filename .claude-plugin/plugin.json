@@ -1,0 +1,13 @@
+{
+  "name": "paywall-ab-test-assistant",
+  "version": "1.1.0",
+  "description": "Ask what to A/B test on your paywall or onboarding and get a verdict, observed uplift ranges, evidence strength, and the trap to avoid, grounded in real subscription-app tests.",
+  "author": {
+    "name": "Adapty",
+    "url": "https://adapty.io"
+  },
+  "homepage": "https://adapty.io/flow-paywall-builder/",
+  "repository": "https://github.com/vkharlan-adapt/paywall-ab-test-assistant",
+  "license": "MIT",
+  "keywords": ["paywall", "onboarding", "subscription", "mobile-apps", "ab-testing", "monetization"]
+}
