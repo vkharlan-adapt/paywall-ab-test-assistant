@@ -1,0 +1,43 @@
+name: Build skill zip
+
+# Publish a GitHub release (any tag, e.g. v1.1.0) and this attaches
+# paywall-ab-test-assistant.zip to it. The stable download link for landing pages is:
+# https://github.com/vkharlan-adapt/paywall-ab-test-assistant/releases/latest/download/paywall-ab-test-assistant.zip
+
+on:
+  release:
+    types: [published]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the skill
+        run: python3 scripts/check_skill.py
+
+      - name: Zip the skill folder
+        run: |
+          mkdir -p dist
+          cd skills
+          zip -r ../dist/paywall-ab-test-assistant.zip paywall-ab-test-assistant -x "*.DS_Store"
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/paywall-ab-test-assistant.zip
+          generate_release_notes: true
+
+      - name: Keep zip as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paywall-ab-test-assistant
+          path: dist/paywall-ab-test-assistant.zip
